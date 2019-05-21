@@ -1,21 +1,27 @@
 variable "azure_subscriptionid" {
-    default = "your subscription id"
+    type = "string"
+    description = "your subscription id"
 }
 variable "azure_tenantid" {
-    default = "your tenant id"
+    type = "string"
+    description = "your tenant id"
 }
 
-variable "azure_clientid" {
-    default = "your appid/client id"
+variable "azure_clientid" {   
+    type = "string"
+    description = "your appid/client id"
 }
 variable "azure_clientsecret" {
-    default = "your password/client secret"
+    type = "string"
+    description = "your password/client secret"
 }
 
 variable "azure_resourcegroup" {
-    default = "myresourcegroup"  
+    type = "string"
+    description = "myresourcegroup"  
 }
 variable "azure_location" {
-    default = "Central US"  
+    type = "string"
+    description = "Central US"  
 }
 
