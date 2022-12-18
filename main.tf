@@ -15,14 +15,14 @@ data "azurerm_resource_group" "az500" {
 }
 
 module "vnet1" {
-    source = "./vnet"
+    source = "./Modules/vnet"
     resource_group = var.resource_group
     vnet_name = var.vnet_name
     cidr_range = var.cidr_range
     subnet_count = var.subnet_count
 }
 module "vnet2" {
-  source = "./vnet"
+  source = "./Modules/vnet"
   resource_group = var.resource_group
   vnet_name = "vnet2"
   cidr_range = "192.169.0.0/16"
