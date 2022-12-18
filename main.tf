@@ -1,24 +1,30 @@
-# creating vnet in azure cloud
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+    }
+  }
+  
 
-provider "azurerm" {
-    subscription_id = "${var.azure_subscriptionid}"
-    client_id       = "${var.azure_clientid}"
-    client_secret   = "${var.azure_clientsecret}"
-    tenant_id       = "${var.azure_tenantid}"
-}
-resource "azurerm_resource_group" "learn" {
-    name = "${var.azure_resourcegroup}"
-    location = "${var.azure_location}"
-
-
-   
+  required_version = ">= 1.3.6"
 }
 
 
+data "azurerm_resource_group" "az500" {
+    name = var.resource_group
+}
 
-
-
-
-
-
-
+module "vnet1" {
+    source = "./vnet"
+    resource_group = var.resource_group
+    vnet_name = var.vnet_name
+    cidr_range = var.cidr_range
+    subnet_count = var.subnet_count
+}
+module "vnet2" {
+  source = "./vnet"
+  resource_group = var.resource_group
+  vnet_name = "vnet2"
+  cidr_range = "192.169.0.0/16"
+  subnet_count = var.subnet_count
+}
